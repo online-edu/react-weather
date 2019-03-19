@@ -7,10 +7,10 @@ export default class Chart extends PureComponent {
     return (
       <section className="mb-3">
         <AreaChart
-          width={600}
+          width={1020}
           height={100}
           data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+          margin={{ top: 10, right: 30, left: 10, bottom: 0 }}
         >
           <XAxis
             axisLine={false}
