@@ -1,0 +1,13 @@
+@import './colors';
+/**
+ * Overwrites the default styles defined by the bootstrap framework.
+ */
+//body
+$font-family-sans-serif: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+$body-color: $white;
+$body-bg: $body-bg-color;
+//border
+$radius: 0.5rem;
+$border-radius: 12px;
+//navbar
+$navbar-light-brand-color: $primary;

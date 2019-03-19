@@ -1,0 +1,9 @@
+@import '../../node_modules/bootstrap/scss/functions';
+@import './colors';
+@import './override';
+/**
+ * Overwrites the default theme colors defined by the bootstrap framework.
+ */
+$theme-colors: (
+  primary: $primary,
+);
