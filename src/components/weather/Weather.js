@@ -1,5 +1,5 @@
 import React from 'react';
-import Forecast from '../forecast';
+import Forecast from './forecast';
 import Current from './Current';
 
 /**

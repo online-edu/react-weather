@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { Search, Weather } from './components';
-import { loadWeatherByCity } from './utils/WeatherService';
+import { loadWeatherByCity } from './components/weather/WeatherService';
 
 class App extends Component {
   constructor() {

@@ -1,6 +1,6 @@
-import { api, key, imageUrl } from './config';
-import { days, fullDay } from './days';
-import request from './request';
+import { api, key, imageUrl } from '../../utils/config';
+import { days, fullDay } from '../../utils/days';
+import request from '../../utils/request';
 
 const query = `units=metric&APPID=${key}`;
 
