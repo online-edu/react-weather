@@ -23,7 +23,7 @@ class App extends Component {
     const { data, loader } = this.state;
     console.log(data);
     return (
-      <div className="container p-5">
+      <div className="container pt-5">
         <Search />
         {!loader && (
           <Weather
