@@ -16,7 +16,7 @@ export default class Chart extends PureComponent {
         <ResponsiveContainer>
           <AreaChart
             data={data}
-            margin={{ top: 10, right: 30, left: 10, bottom: 0 }}
+            margin={{ top: 0, right: 30, left: 30, bottom: 0 }}
           >
             <XAxis
               axisLine={false}
@@ -32,6 +32,7 @@ export default class Chart extends PureComponent {
               stroke="#ffcb02"
               fill="#fff6d3"
               dot={true}
+              name="Temperature"
             />
           </AreaChart>
         </ResponsiveContainer>
