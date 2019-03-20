@@ -7,5 +7,5 @@ export const fullDay = [
   'Wednesday',
   'Thursday',
   'Friday',
-  'Satday',
+  'Saturday',
 ];
