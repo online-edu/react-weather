@@ -106,7 +106,6 @@ const getCityFromStorage = () => {
 const loadWeatherByDay = weather => {
   const data = getWeatherFromStorage();
   const city = getCityFromStorage();
-  console.log(weather);
   const { date, day, maxTemp, alt } = weather;
   const key = `${date}_${day}`;
   const current = getCurrentWeather(

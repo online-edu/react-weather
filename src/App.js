@@ -21,7 +21,6 @@ class App extends Component {
 
   render() {
     const { data, loader } = this.state;
-    console.log(data);
     return (
       <div className="container pt-5">
         <Search />
