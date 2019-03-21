@@ -4,16 +4,13 @@ import React from 'react';
  * Search component.
  */
 const Search = () => (
-  <div className="input-group input-group-lg mb-4">
-    <input
-      type="text"
-      className="form-control"
-      aria-label="Sizing example input"
-      placeholder="Type a city name"
-      aria-describedby="inputGroup-sizing-lg"
-      disabled
-    />
-  </div>
+  <input
+    type="text"
+    className="form-control mr-sm-2"
+    aria-label="City input"
+    placeholder="Type a city name..."
+    disabled
+  />
 );
 
 export default Search;

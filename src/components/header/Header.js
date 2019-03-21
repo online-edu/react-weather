@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from '../search';
 import './Header.scss';
 
 /**
@@ -15,6 +16,9 @@ const Header = () => (
         ☁️
       </span>
     </button>
+    <form class="form-inline my-2 my-lg-0">
+      <Search />
+    </form>
   </nav>
 );
 export default Header;

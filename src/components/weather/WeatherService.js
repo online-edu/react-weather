@@ -125,53 +125,55 @@ const loadWeatherByDay = weather => {
  * @param {String} city - city name
  * @returns {Promise}
  */
-const loadWeatherByCity = (city = 'London') =>
-  request.get(`${api}/forecast?q=${city}&${query}`).then(({ city, list }) => {
-    localStorage.setItem('weather', JSON.stringify(list));
-    // Format data for chart for current day
-    const tempInHours = getChartData(list.slice(0, 8));
-    // Format data for next 5 days
-    const tempInDays = [];
-    let sortedList = {};
-    list.reduce((prev, current) => {
-      const {
-        dt_txt,
-        main,
-        weather: [{ icon, main: alt }],
-      } = current;
-      const currentDate = getDate(dt_txt);
-      const prevDate = getDate(prev.dt_txt);
-      const dayNumber = getDay(dt_txt);
-      const day = days(dayNumber);
-      const key = `${currentDate}_${day}`;
-      const existingItems = sortedList[key] || [];
-      sortedList = {
-        ...sortedList,
-        [key]: [...existingItems, current],
-      };
-      if (currentDate !== prevDate) {
-        tempInDays.push(
-          getWeatherForecast(currentDate, dayNumber, icon, alt, day, main),
-        );
-      }
-      return current;
-    }, []);
+const loadWeatherByCity = (city, country) =>
+  request
+    .get(`${api}/forecast?q=${city},${country}&${query}`)
+    .then(({ city, list }) => {
+      localStorage.setItem('weather', JSON.stringify(list));
+      // Format data for chart for current day
+      const tempInHours = getChartData(list.slice(0, 8));
+      // Format data for next 5 days
+      const tempInDays = [];
+      let sortedList = {};
+      list.reduce((prev, current) => {
+        const {
+          dt_txt,
+          main,
+          weather: [{ icon, main: alt }],
+        } = current;
+        const currentDate = getDate(dt_txt);
+        const prevDate = getDate(prev.dt_txt);
+        const dayNumber = getDay(dt_txt);
+        const day = days(dayNumber);
+        const key = `${currentDate}_${day}`;
+        const existingItems = sortedList[key] || [];
+        sortedList = {
+          ...sortedList,
+          [key]: [...existingItems, current],
+        };
+        if (currentDate !== prevDate) {
+          tempInDays.push(
+            getWeatherForecast(currentDate, dayNumber, icon, alt, day, main),
+          );
+        }
+        return current;
+      }, []);
 
-    sessionStorage.setItem('data', JSON.stringify(sortedList));
-    sessionStorage.setItem('city', JSON.stringify(city));
+      sessionStorage.setItem('data', JSON.stringify(sortedList));
+      sessionStorage.setItem('city', JSON.stringify(city));
 
-    const [
-      {
-        dt_txt,
-        main,
-        weather: [weather],
-      },
-    ] = list;
+      const [
+        {
+          dt_txt,
+          main,
+          weather: [weather],
+        },
+      ] = list;
 
-    return Promise.resolve({
-      forecast: tempInDays,
-      current: getCurrentWeather(dt_txt, weather, main, city, tempInHours),
+      return Promise.resolve({
+        forecast: tempInDays,
+        current: getCurrentWeather(dt_txt, weather, main, city, tempInHours),
+      });
     });
-  });
 
 export { loadWeatherByCity, loadWeatherByDay };
