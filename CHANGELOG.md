@@ -2,11 +2,13 @@
 
 ##### Build System / Dependencies
 
+* **docs:**  update demo (9277ebd1)
 *  add demo (7a9e92fe)
 *  add commit linter (262a3553)
 
 ##### Chores
 
+*  improve app (8a84ce5d)
 *  fix issues and add debugger script (e4978188)
 *  update landing view (64dde532)
 *  add url for weather condition (817ea35e)
@@ -32,6 +34,7 @@
 
 ##### Bug Fixes
 
+*  date issue in safari and class name (589aa140)
 *  error messages and n/w req (9794048b)
 *  improve style and layout (8749684d)
 *  disable search (513808f4)
