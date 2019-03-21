@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from '../spinner';
 import './City.scss';
 
 const cities = [
@@ -13,10 +14,17 @@ const cities = [
 /**
  * City component.
  */
-const City = ({ cityClick }) => (
+const City = ({ cityClick, loader }) => (
   <div className="card mb-4">
     <div className="card-body">
-      <h5 className="card-title">Popular Cities</h5>
+      <h5 className="card-title">
+        Popular Cities
+        {loader && (
+          <div className="float-right">
+            <Spinner />
+          </div>
+        )}
+      </h5>
       <div className="row">
         {cities &&
           cities.map((city, i) => (
