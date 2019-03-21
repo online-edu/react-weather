@@ -16,7 +16,7 @@ export default class Chart extends PureComponent {
   static get propTypes() {
     return {
       /** Chart data */
-      data: PropTypes.shape({ temp: PropTypes.object }).isRequired,
+      data: PropTypes.array.isRequired,
     };
   }
 

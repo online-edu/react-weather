@@ -12,6 +12,10 @@
 *  add url for weather condition (817ea35e)
 *  initial commit (00baefd5)
 
+##### Documentation Changes
+
+*  add change log and update readme (6603beba)
+
 ##### New Features
 
 *  enable sw (48b08125)
@@ -28,6 +32,7 @@
 
 ##### Bug Fixes
 
+*  error messages and n/w req (9794048b)
 *  improve style and layout (8749684d)
 *  disable search (513808f4)
 *  replace with hooks (e12c58e9)

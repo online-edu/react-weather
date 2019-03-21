@@ -26,3 +26,4 @@ Visit [`https://online-edu.github.io/react-weather`](https://online-edu.github.i
 - City search
 - Temprature variation
 - Redux/MobX
+- Error handling
