@@ -1,0 +1,15 @@
+@import '../../styles//override';
+
+.city {
+  &__btn {
+    transition: all 0.3s ease-in;
+    border-radius: 18px;
+    &--country-icon {
+      font-size: 48px;
+    }
+    &:hover,
+    &:focus {
+      transform: scale(1.1);
+    }
+  }
+}
