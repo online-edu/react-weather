@@ -1,0 +1,16 @@
+@import '../../styles/colors';
+
+.weather-header {
+  box-shadow: 0px 0px 40px 0px $deep-shadow;
+  background-color: $white !important;
+  height: 75px;
+  .weather-header__brand {
+    position: relative;
+    span {
+      font-size: 34px;
+      position: absolute;
+      top: -5px;
+      right: -30px;
+    }
+  }
+}
