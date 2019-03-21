@@ -9,14 +9,14 @@ const query = `units=metric&APPID=${key}`;
  * @param {String} date - date
  * @returns {Number}
  */
-const getDate = date => new Date(date).getDate();
+const getDate = date => new Date(date.replace(/ /g, 'T')).getDate();
 
 /**
  * Get week day number from date
  * @param {String} date - date
  * @returns {Number}
  */
-const getDay = date => new Date(date).getDay();
+const getDay = date => new Date(date.replace(/ /g, 'T')).getDay();
 
 /**
  * Get weather forecast as an object
@@ -110,7 +110,7 @@ const loadWeatherByDay = weather => {
   const { date, day, maxTemp, alt } = weather;
   const key = `${date}_${day}`;
   const current = getCurrentWeather(
-    new Date().setDate(date),
+    new Date().setDate(date).toString(),
     { ...weather, main: alt },
     { temp: maxTemp },
     city,
@@ -142,7 +142,8 @@ const loadWeatherByCity = (city, country) =>
           weather: [{ icon, main: alt }],
         } = current;
         const currentDate = getDate(dt_txt);
-        const prevDate = getDate(prev.dt_txt);
+        let prevDate;
+        if (Object.entries(prev).length !== 0) prevDate = getDate(prev.dt_txt);
         const dayNumber = getDay(dt_txt);
         const day = days(dayNumber);
         const key = `${currentDate}_${day}`;

@@ -54,7 +54,7 @@ class App extends Component {
               />
             )}
             {err.network && (
-              <div class="alert alert-danger" role="alert">
+              <div className="alert alert-danger" role="alert">
                 {err.message}
               </div>
             )}
