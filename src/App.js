@@ -1,6 +1,6 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import { City, Search, Weather } from './components';
+import { City, Footer, Header, Search, Weather } from './components';
 import { loadWeatherByCity } from './components/weather/WeatherService';
 
 const App = () => {
@@ -25,17 +25,21 @@ const App = () => {
   }
 
   return (
-    <div className="container pt-5">
-      <Search />
-      <City cityClick={onCityClick} loader={loader} />
-      {!loader && (
-        <Weather
-          current={data.current}
-          chart={data.chart}
-          forecast={data.forecast}
-        />
-      )}
-    </div>
+    <React.Fragment>
+      <Header />
+      <div className="container py-4">
+        <Search />
+        <City cityClick={onCityClick} loader={loader} />
+        {!loader && (
+          <Weather
+            current={data.current}
+            chart={data.chart}
+            forecast={data.forecast}
+          />
+        )}
+      </div>
+      <Footer />
+    </React.Fragment>
   );
 };
 
