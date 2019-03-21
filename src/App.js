@@ -1,47 +1,69 @@
 // @flow
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import { City, Footer, Header, Weather } from './components';
 import { loadWeatherByCity } from './components/weather/WeatherService';
 
-const App = () => {
-  const [data, setData] = useState({});
-  const [loader, setLoader] = useState(true);
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      city: '',
+      data: {},
+      loader: true,
+      err: { network: false, message: '' },
+    };
+    this.onCityClick = this.onCityClick.bind(this);
+  }
 
-  useEffect(() => {
-    loadWeather('Vancouver', 'CA');
-  });
+  componentDidMount() {
+    this.loadWeather('Vancouver', 'CA');
+  }
 
-  function onCityClick(city) {
+  onCityClick(city) {
     const { name, country } = city;
-    setLoader(true);
-    loadWeather(name, country);
+    this.loadWeather(name, country);
   }
 
-  function loadWeather(city, country) {
-    loadWeatherByCity(city, country).then(data => {
-      setData(data);
-      setLoader(false);
-    });
+  loadWeather(name, country) {
+    this.setState({ loader: true });
+    loadWeatherByCity(name, country)
+      .then(data => {
+        this.setState({ data });
+      })
+      .catch(error => {
+        this.setState({
+          err: { network: true, message: error.message },
+        });
+      })
+      .finally(() => this.setState({ loader: false }));
   }
 
-  return (
-    <React.Fragment>
-      <Header />
-      <main>
-        <div className="container py-4 weather">
-          <City cityClick={onCityClick} loader={loader} />
-          {!loader && (
-            <Weather
-              current={data.current}
-              chart={data.chart}
-              forecast={data.forecast}
-            />
-          )}
-        </div>
-      </main>
-      <Footer />
-    </React.Fragment>
-  );
-};
+  render() {
+    const { data, loader, err } = this.state;
+    return (
+      <React.Fragment>
+        <Header />
+        <main>
+          <div className="container py-4 weather">
+            <City cityClick={this.onCityClick} loader={loader} />
+            {!loader && !err.network && (
+              <Weather
+                current={data.current}
+                chart={data.chart}
+                forecast={data.forecast}
+              />
+            )}
+            {err.network && (
+              <div class="alert alert-danger" role="alert">
+                {err.message}
+              </div>
+            )}
+          </div>
+        </main>
+        <Footer />
+      </React.Fragment>
+    );
+  }
+}
 
 export default App;

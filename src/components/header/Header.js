@@ -6,7 +6,7 @@ import './Header.scss';
  * Header component.
  */
 const Header = () => (
-  <nav className="navbar sticky-top weather-header">
+  <nav className="navbar sticky-top weather-header pl-1">
     <button
       type="button"
       className="navbar-brand btn-link btn weather-header__brand"
