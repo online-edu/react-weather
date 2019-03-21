@@ -16,7 +16,7 @@ const Header = () => (
         ☁️
       </span>
     </button>
-    <form class="form-inline my-2 my-lg-0">
+    <form className="form-inline my-2 my-lg-0">
       <Search />
     </form>
   </nav>

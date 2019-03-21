@@ -3,6 +3,7 @@ import { days, fullDay } from '../../utils/days';
 import request from '../../utils/request';
 
 const query = `units=metric&APPID=${key}`;
+
 /**
  * Get date number from full date
  * @param {String} date - date
@@ -129,7 +130,6 @@ const loadWeatherByCity = (city, country) =>
   request
     .get(`${api}/forecast?q=${city},${country}&${query}`)
     .then(({ city, list }) => {
-      localStorage.setItem('weather', JSON.stringify(list));
       // Format data for chart for current day
       const tempInHours = getChartData(list.slice(0, 8));
       // Format data for next 5 days
@@ -161,7 +161,7 @@ const loadWeatherByCity = (city, country) =>
 
       sessionStorage.setItem('data', JSON.stringify(sortedList));
       sessionStorage.setItem('city', JSON.stringify(city));
-
+      // Get data for current time `getCurrentWeather`
       const [
         {
           dt_txt,
