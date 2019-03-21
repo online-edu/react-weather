@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 const style = {
@@ -9,6 +10,19 @@ const style = {
 };
 
 export default class Chart extends PureComponent {
+  /**
+   * Chart props types.
+   */
+  static get propTypes() {
+    return {
+      /** Chart data */
+      data: PropTypes.shape({ temp: PropTypes.object }).isRequired,
+    };
+  }
+
+  /**
+   * Render method for component
+   */
   render() {
     const { data } = this.props;
     return (

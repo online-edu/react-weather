@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Spinner from '../spinner';
 import './City.scss';
 
@@ -53,4 +54,13 @@ const City = ({ cityClick, loader }) => (
   </div>
 );
 
+/**
+ * City props types.
+ */
+City.propTypes = {
+  /** Toggle spinner */
+  loader: PropTypes.bool,
+  /** Gets called when the city button is clicked. */
+  cityClick: PropTypes.func.isRequired,
+};
 export default City;

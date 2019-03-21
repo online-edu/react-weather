@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Forecast from './forecast';
 import Current from './Current';
 import { loadWeatherByDay } from './WeatherService';
@@ -24,4 +25,13 @@ const Weather = ({ forecast, current }) => {
   );
 };
 
+/**
+ * Weather props types.
+ */
+Weather.propTypes = {
+  /** Forecast data */
+  forecast: PropTypes.array.isRequired,
+  /** Current weather data */
+  current: PropTypes.shape({ day: PropTypes.string }).isRequired,
+};
 export default Weather;
